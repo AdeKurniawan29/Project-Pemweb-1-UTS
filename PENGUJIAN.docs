@@ -1,0 +1,92 @@
+LAPORAN PENGUJIAN - MENU KANTIN
+Nama mahasiswa: ______________________
+NIM: _________________________________
+Tanggal pengujian: ___________________
+
+PENTING:
+Isi kolom hasil sebenarnya setelah menjalankan pengujian di komputer sendiri.
+Ambil screenshot untuk setiap skenario dan beri nama file yang jelas, misalnya
+uji-01-login-berhasil.png. Jangan menuliskan hasil yang belum benar-benar diuji.
+
+Kolom tiap skenario:
+- Langkah dan masukan
+- Hasil yang diharapkan
+- Hasil sebenarnya
+- Bukti screenshot
+
+1. Login benar
+   Langkah: Masuk menggunakan akun admin yang disediakan.
+   Diharapkan: Login berhasil dan halaman daftar menu terbuka.
+   Sebenarnya: ________________________
+   Screenshot: ________________________
+
+2. Login salah
+   Langkah: Masukkan username atau kata sandi yang salah.
+   Diharapkan: Pesan umum "Username atau kata sandi salah."
+   Sebenarnya: ________________________
+   Screenshot: ________________________
+
+3. Registrasi username duplikat
+   Langkah: Daftarkan username yang sudah digunakan.
+   Diharapkan: Registrasi ditolak dengan pesan username sudah digunakan.
+   Sebenarnya: ________________________
+   Screenshot: ________________________
+
+4. Uji validasi minimal tiga error sekaligus (WAJIB)
+   Langkah: Login sebagai admin, buka tambah menu, kirim nama kosong,
+   kategori kosong, harga 0, dan status kosong.
+   Diharapkan: Sedikitnya tiga pesan validasi tampil dekat kolom terkait;
+   nilai form yang benar tetap terisi.
+   Sebenarnya: ________________________
+   Screenshot: ________________________
+
+5. Uji otorisasi anggota (WAJIB)
+   Langkah: Login sebagai anggota, lalu buka langsung /tambah.php.
+   Diharapkan: Akses ditolak dengan kode HTTP 403.
+   Sebenarnya/kode respons: ____________
+   Screenshot: ________________________
+
+6. Harga di luar rentang
+   Langkah: Login sebagai admin dan masukkan harga 999 atau 100001.
+   Diharapkan: Data tidak tersimpan dan pesan rentang harga tampil.
+   Sebenarnya: ________________________
+   Screenshot: ________________________
+
+7. Status Tidak dengan alasan terlalu pendek
+   Langkah: Pilih status Tidak dan masukkan deskripsi kurang dari 10 karakter.
+   Diharapkan: Data tidak tersimpan dan pesan alasan minimal 10 karakter tampil.
+   Sebenarnya: ________________________
+   Screenshot: ________________________
+
+8. Uji keamanan keluaran (WAJIB)
+   Langkah: Tambahkan nama menu dengan teks <script>alert("xss")</script>
+   atau <b>tebal</b> jika panjang nama memenuhi aturan.
+   Diharapkan: Teks ditampilkan sebagai teks biasa, tidak menjalankan script
+   dan tidak mengubah format menjadi HTML.
+   Bukti kode sumber: fungsi e() menggunakan htmlspecialchars().
+   Sebenarnya: ________________________
+   Screenshot: ________________________
+
+9. Detail dengan ID tidak valid
+   Langkah: Buka detail.php?id=abc.
+   Diharapkan: Permintaan ditolak dengan kode HTTP 400 dan pesan ID tidak valid.
+   Sebenarnya/kode respons: ____________
+   Screenshot: ________________________
+
+10. Data tersimpan dan tampil
+    Langkah: Tambahkan satu menu yang valid, lalu buka daftar dan detailnya.
+    Diharapkan: Data tampil dengan harga, status, deskripsi, dan nama penginput.
+    Sebenarnya: ________________________
+    Screenshot: ________________________
+
+11. Logout
+    Langkah: Klik Keluar, lalu coba buka daftar.php lagi.
+    Diharapkan: Sesi berakhir dan pengguna diarahkan ke halaman login.
+    Sebenarnya: ________________________
+    Screenshot: ________________________
+
+12. Data awal
+    Langkah: Impor app.sql dan buka daftar menu.
+    Diharapkan: Lima menu awal tampil dan nama penginput ditampilkan.
+    Sebenarnya: ________________________
+    Screenshot: ________________________

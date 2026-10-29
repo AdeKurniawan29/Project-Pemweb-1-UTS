@@ -1,0 +1,38 @@
+CATATAN LOGIKA PROGRAM
+
+1. koneksi.php
+   Koneksi MySQL berada dalam satu file. Kesalahan dicatat ke error log dan
+   pengunjung hanya melihat pesan umum.
+
+2. sesi.php
+   Menyiapkan session, fungsi e() untuk escape HTML, pemeriksaan login/peran,
+   dan token untuk memeriksa pengiriman formulir.
+
+3. registrasi.php
+   Memeriksa nama, username, dan sandi. Sandi disimpan menggunakan password_hash().
+   Username unik dijaga oleh database; error 1062 ditampilkan sebagai pesan ramah.
+   Registrasi publik tidak bisa memilih peran admin.
+
+4. login.php
+   Mengambil akun menggunakan prepared statement dan memeriksa sandi dengan
+   password_verify(). Pesan kesalahan tidak membedakan username atau sandi.
+   session_regenerate_id(true) dijalankan setelah login berhasil.
+
+5. tambah.php
+   Hanya admin yang dapat membuka halaman ini. Semua kolom diperiksa di server.
+   Nilai kategori dan status diperiksa memakai whitelist. Harga harus Rp1.000
+   sampai Rp100.000. Jika status Tidak, deskripsi alasan minimal 10 karakter.
+   pengguna_id diambil dari session, bukan dari form. Insert memakai prepared
+   statement dan redirect setelah berhasil (PRG).
+
+6. daftar.php
+   Menampilkan semua menu dari yang terbaru. JOIN digunakan agar nama penginput
+   berasal dari tabel pengguna. Nilai dinamis dicetak memakai e().
+
+7. detail.php
+   ID dari URL diperiksa sebagai integer. Query memakai prepared statement
+   dengan parameter bertipe i. Nilai yang dicetak di-escape.
+
+8. Batas cakupan
+   Tidak ada fitur edit, hapus, pencarian, pagination, pembayaran, atau chatbot
+   karena tidak diminta dalam spesifikasi mini project ini.
